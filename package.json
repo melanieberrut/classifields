@@ -1,0 +1,22 @@
+{
+  "name": "ng-classifieds",
+  "version": "1.0.0",
+  "description": "angular app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melanieberrut/ngClassifieds.git"
+  },
+  "keywords": [
+    "angularjs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melanieberrut/ngClassifieds/issues"
+  },
+  "homepage": "https://github.com/melanieberrut/ngClassifieds#readme"
+}

@@ -1,0 +1,7 @@
+button .material-icons {
+	margin-top: 7px;
+}
+
+md-card > img.classified-card {
+	height: inherit !important;
+}
