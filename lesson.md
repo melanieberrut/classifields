@@ -1,1 +1,113 @@
-lesson
+# classifields
+Angular Application
+
+
+#Single Page Application
+Improve UX but with plain JS are hard.
+ > AngularJS 
+
+
+#What a JS framework should provide
+HTTP Communication with XHR (without page refresh)
+DOM Manipulation (using jQlite)
+Manage States and Routing
+
+Same could be done with jQuery, but the amount of code is more important than AngularJS
+
+
+
+#The Good and The Bad
+
+##Goods
+Two way data-binding
+Large community (people and tutorials)
+Big on the Open Source
+Tested and Proven
+Enable productivity once proefficient 
+
+##Bads
+Steep learning curve
+New terms and concepts
+Many ways to do things
+Bad for SEO (problem with SAP more than just AngularJS only - third party library available)
+Poor performance (limited to benchmark test)
+
+
+#Dependencies
+http-server
+angular
+angular-material
+mdi
+
+
+#MVC
+Separation of concerns
+smaller units easier to reason
+helpful for working in teams
+DRY code
+Saves time, on the long run
+
+
+
+#Standard MVC
+Model: Backend communication
+View: What the user sees (content retrieve from DB)
+Controller: communicate between the model and the view
+V > C > M
+V < C < M
+MVC Alternatives: 
+Model - View - Presenter
+Model - View - View - Model
+Angular is MV*
+
+
+
+#What is $scope
+ > Way to enable the com between the controller and the view
+ Data model is an object, that has good properties and values which represent some data. 
+ $scope object is what allowed the data model to be shared between the view and the controller
+
+
+
+#Two way data binding
+> using ng-model
+
+
+
+#templating
+> used to show data on the screen
+> every properties inside {{}} will be displaying the value of that property
+
+
+#Dependency injection
+how function get create and get hold of other piece of code created
+
+
+#Remote Data
+Application needs to retrieve and send data
+> none SAP
+	- Resources returned for individual pages
+	- data returned with request
+> SAP
+	- All pages resources on intial page load
+	- data is send and receive with a data API
+	- backend is self contained
+	- front end is self contained	
+
+#HTTP
+HTTP service returns promises - helps with asynch of JS
+once promises is resolved, use .then to handle as a resource
+store the data in scope
+
+
+#Services
+More reusable components for the rest of the app - might be needed severals places - avoid code repetition
+> Use a factory
+Factory needs to return an object
+
+
+
+
+#Glossary
+XHR: XML Http Request
+IIFE: Immediately invoke function Expression
