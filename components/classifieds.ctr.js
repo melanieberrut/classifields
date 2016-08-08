@@ -3,11 +3,12 @@
 
 	angular
 		.module("ngClassifieds")
-		.controller("classifiedsCtrl", function($scope, $http){ // Injecting $scope
+
+		// Injecting $scope and the new factory
+		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory){ 
 			
-			$http
-				// promise
-				.get("data/classifieds.json")
+		
+				classifiedsFactory.getClassifieds()
 
 				.then(function(classifieds){
 					$scope.classifieds = classifieds.data;
