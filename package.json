@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/melanieberrut/ngClassifieds/issues"
   },
-  "homepage": "https://github.com/melanieberrut/ngClassifieds#readme"
+  "homepage": "https://github.com/melanieberrut/ngClassifieds#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-material": "^1.1.0-rc.5",
+    "http-server": "^0.9.0",
+    "mdi": "^1.6.50"
+  }
 }
