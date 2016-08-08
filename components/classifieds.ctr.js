@@ -52,18 +52,39 @@
 						$scope.closeSidebar();
 
 						// notfication to show
-						$mdToast.show(
-							$mdToast.simple()
-								.content("Classfied Save!")
-								.position("top, right")
-								.hideDelay("3000")
-						);
+						showToast("classified added!")
 					}
 
 
 				}
 
-			
 
+				// Edit the classfied method
+				$scope.editClassified = function(classified){
+					$scope.editing = true;
+					$scope.openSidebar();
+
+					$scope.classified = classified;
+				}
+			
+				$scope.saveEdit = function(){
+					$scope.editing = false;
+					// clear form
+					$scope.classified = {};
+					// close side bar
+					$scope.closeSidebar();
+
+					showToast("Edit saved!")
+
+				}
+
+				function showToast(message) {
+					$mdToast.show(
+						$mdToast.simple()
+							.content(message)
+							.position("top, right")
+							.hideDelay("3000")
+					);
+				}
 		});
 })();
