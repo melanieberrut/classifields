@@ -5,7 +5,7 @@
 		.module("ngClassifieds")
 
 		// Injecting $scope and the new factory
-		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast){ 
+		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){ 
 			
 		
 				classifiedsFactory.getClassifieds()
@@ -78,6 +78,7 @@
 
 				}
 
+				// reusable show toast function
 				function showToast(message) {
 					$mdToast.show(
 						$mdToast.simple()
@@ -85,6 +86,33 @@
 							.position("top, right")
 							.hideDelay("3000")
 					);
+				}
+
+				// Delete with 2 arguments: event and current element
+				$scope.deleteClassified = function (event, classified){
+					// config confirm
+					var confirm = $mdDialog.confirm()
+						.title("Are you sure you want to delete " + classified.title + " ?")
+						.ok("Yes")
+						.cancel("No")
+						.targetEvent(event);
+
+					$mdDialog
+						// promise
+						.show(confirm)
+						// what happens when this resolves
+						.then(
+							// FOR CLICK YES
+							function(){
+								// finding the index in the array
+								var index = $scope.classifieds.indexOf(classified);
+								$scope.classifieds.splice(index, 1);
+						}, 
+							// FOR CLICK NO
+							function(){
+								// to do
+						});
+
 				}
 		});
 })();
