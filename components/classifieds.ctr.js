@@ -9,9 +9,8 @@
 				// promise
 				.get("data/classifieds.json")
 
-				.then(function(data){
-					console.log(data);
-					// $scope.classifieds = data;
+				.then(function(classifieds){
+					$scope.classifieds = classifieds.data;
 				});
 
 			
