@@ -11,14 +11,37 @@
 <body data-ng-app="ngClassifieds" data-ng-controller="classifiedsCtrl">
 	
 	<md-toolbar>
-		<div data-ng-click="openSidebar()" class="md-toolbar-tools">
+		<div class="md-toolbar-tools">
 			<p><strong>ngClassifieds</strong></p>
-			<md-button>
+			<md-button data-ng-click="openSidebar()">
 				<md-icon class="mdi mdi-plus-circle"></md-icon>
 				New Classified
 			</md-button>
+			<md-button data-ng-click="showFilters = true">
+				<md-icon class="mdi mdi-plus-magnify"></md-icon>
+				Filters
+			</md-button>
 		</div>
+
 	</md-toolbar>
+
+	<div class="filters" layout="row" layout-align="center center" data-show="showFilters">
+		<md-input-container>
+			<label for="filter">Enter Search Term</label>
+			<input type="text" data-ng-model="classifiedsFilter" id="filter">
+		</md-input-container>
+		<md-input-container>
+			<label for="category">Category</label>
+			<md-select id="category" data-ng-model="category">
+				<md-option data-ng-repeat="category in categories" value="{{ category }}">
+					{{ category }}
+				</md-option>
+			</md-select>
+		</md-input-container>
+		<div layout="row">
+			<md-button class="md-warn" data-ng-click="classifiedsFilter = ''; category = '';">Clear</md-button>
+		</div>
+	</div>
 
 	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
 		<md-toolbar>
@@ -58,7 +81,9 @@
 
 	<md-content class="md-padding" layout-xs="column" layout="row">
 
-		<md-card flex="30" data-ng-repeat="classified in classifieds">
+		<md-card flex="30" data-ng-repeat="classified in classifieds 
+											| filter: classifiedsFilter
+											| filter: category">
 			<img class="classified-card" data-ng-src="{{ classified.image }}">
 			<md-card-content>
 
@@ -111,6 +136,7 @@
 	<script src="scripts/app.js"></script>
 	<script src="components/classifieds.ctr.js"></script>
 	<script src="components/classifieds.fac.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.js"></script>
 </body>
 
 </html>

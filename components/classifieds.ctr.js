@@ -7,11 +7,12 @@
 		// Injecting $scope and the new factory
 		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){ 
 			
-		
+				// asynch
 				classifiedsFactory.getClassifieds()
-
 				.then(function(classifieds){
 					$scope.classifieds = classifieds.data;
+
+					$scope.categories = getCategories($scope.classifieds);
 				});
 
 				// Fake out user logged in contact details
@@ -20,6 +21,8 @@
 					phone: "0707070707070",
 					email: "test@test.com"
 				}
+
+				
 
 
 				$scope.openSidebar = function() {
@@ -113,6 +116,21 @@
 								// to do
 						});
 
+				}
+
+				// Taking out list of data: classifieds
+				function getCategories(classifieds) {
+					var categories = [];
+					// iterating throught it, each items from it
+					angular.forEach(classifieds, function(item){
+						// for each item get the category of it
+						angular.forEach(item.categories, function(category){
+							categories.push(category);
+						});
+					});
+
+					// we want to put unique category to avoid duplicate results
+					return _.uniq(categories);
 				}
 		});
 })();
