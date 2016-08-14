@@ -6,3 +6,4 @@ Angular Application
 angular-materials
 http-server
 lodash
+ngAnimate

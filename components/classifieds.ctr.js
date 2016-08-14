@@ -22,9 +22,6 @@
 					email: "test@test.com"
 				}
 
-				
-
-
 				$scope.openSidebar = function() {
 					// open the sidebar
 

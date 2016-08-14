@@ -25,7 +25,7 @@
 
 	</md-toolbar>
 
-	<div class="filters" layout="row" layout-align="center center" data-show="showFilters">
+	<div class="filters" layout="row" layout-align="center center" ng-init="showFilters = false" data-ng-show="showFilters">
 		<md-input-container>
 			<label for="filter">Enter Search Term</label>
 			<input type="text" data-ng-model="classifiedsFilter" id="filter">
@@ -83,7 +83,8 @@
 
 		<md-card flex="30" data-ng-repeat="classified in classifieds 
 											| filter: classifiedsFilter
-											| filter: category">
+											| filter: category"
+			class="classifieds">
 			<img class="classified-card" data-ng-src="{{ classified.image }}">
 			<md-card-content>
 
