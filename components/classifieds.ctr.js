@@ -6,13 +6,28 @@
 
 		// Injecting $scope and the new factory
 		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){ 
-			
+				
+				var vm = this;
+
+
+				vm.openSidebar = openSidebar;
+				vm.closeSidebar = closeSidebar;
+				vm.saveClassified = saveClassified;
+				vm.editClassified = editClassified;
+				vm.saveEdit = saveEdit;
+				vm.deleteClassified = deleteClassified;
+
+				// not running them but just initialising them
+				vm.classifieds;
+				vm.categories;
+				vm.editing;
+				vm.classified;
+
 				// asynch
 				classifiedsFactory.getClassifieds()
 				.then(function(classifieds){
-					$scope.classifieds = classifieds.data;
-
-					$scope.categories = getCategories($scope.classifieds);
+					vm.classifieds = classifieds.data;
+					vm.categories = getCategories(vm.classifieds);
 				});
 
 				// Fake out user logged in contact details
@@ -22,13 +37,13 @@
 					email: "test@test.com"
 				}
 
-				$scope.openSidebar = function() {
+				function openSidebar() {
 					// open the sidebar
 
 					// using componenet ID
 					$mdSidenav("left").open();
 				}
-				$scope.closeSidebar = function() {
+				function closeSidebar() {
 					// open the sidebar
 
 					// using componenet ID
@@ -36,20 +51,20 @@
 				}
 
 				// parsing the classified object to the array
-				$scope.saveClassified = function(classified){
+				function saveClassified(classified){
 					// verify that at least one property is defined before sending
 					// the object
 					// to do: add validation on the form
 					if (classified) {
 						// attaching the contact details to object
 						classified.contact = contact;
-						$scope.classifieds.push(classified);
+						vm.classifieds.push(classified);
 
 						// Empty the submitted data to allow the user to enter new
-						$scope.classified = {};
+						vm.classified = {};
 
 						// close sidebar on save
-						$scope.closeSidebar();
+						closeSidebar();
 
 						// notfication to show
 						showToast("classified added!")
@@ -60,21 +75,21 @@
 
 
 				// Edit the classfied method
-				$scope.editClassified = function(classified){
-					$scope.editing = true;
-					$scope.openSidebar();
+				function editClassified(classified){
+					vm.editing = true;
+					openSidebar();
 
-					$scope.classified = classified;
+					vm.classified = classified;
 				}
 			
-				$scope.saveEdit = function(){
-					$scope.editing = false;
+				function saveEdit(){
+					vm.editing = false;
 					// clear form
-					$scope.classified = {};
+					vm.classified = {};
 					// close side bar
-					$scope.closeSidebar();
+					closeSidebar();
 
-					showToast("Edit saved!")
+					showToast("Edit saved!");
 
 				}
 
@@ -89,7 +104,7 @@
 				}
 
 				// Delete with 2 arguments: event and current element
-				$scope.deleteClassified = function (event, classified){
+				function deleteClassified(event, classified){
 					// config confirm
 					var confirm = $mdDialog.confirm()
 						.title("Are you sure you want to delete " + classified.title + " ?")
@@ -105,8 +120,8 @@
 							// FOR CLICK YES
 							function(){
 								// finding the index in the array
-								var index = $scope.classifieds.indexOf(classified);
-								$scope.classifieds.splice(index, 1);
+								var index = vm.classifieds.indexOf(classified);
+								vm.classifieds.splice(index, 1);
 						}, 
 							// FOR CLICK NO
 							function(){

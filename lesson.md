@@ -105,8 +105,40 @@ More reusable components for the rest of the app - might be needed severals plac
 > Use a factory
 Factory needs to return an object
 
+#UI Route controllers
+```javascript
+//app.js
+.state("one", {
+	url: "/stateone",
+	template: "<h1>State 1 - {{ stateone.message }}</h1>",
+	controller: "stateOneCtrl as stateone"
+})
 
+//controller
+.controller("stateOneCtrl", function($scope){
+	// capture variable, vm = view model
+	var vm = this;
+	vm.message = "Hey from state one";
+});
+```
+Changing in the controller from
+```javascript
+$scope.openSidebar = function() {
+	//code
+}
+```
+to
+```javascript
+var vm = this;
+vm.openSidebar = openSidebar;
 
+function openSidebar (){
+	//code
+}
+```
+Then in the view, replace all $scope.something, into the vm.something.
+
+Good practise: on the controller, all the new : vm.something at the top of the code, should be alphabetically ordered.
 
 #Glossary
 XHR: XML Http Request
