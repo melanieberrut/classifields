@@ -140,6 +140,9 @@ Then in the view, replace all $scope.something, into the vm.something.
 
 Good practise: on the controller, all the new : vm.something at the top of the code, should be alphabetically ordered.
 
+#watch
+watchers, is a special feature that comes with $, watches some values and we can define custom behavior to respond on when this value changes
+
 #Glossary
 XHR: XML Http Request
 IIFE: Immediately invoke function Expression
