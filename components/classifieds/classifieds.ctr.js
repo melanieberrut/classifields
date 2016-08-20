@@ -5,7 +5,7 @@
 		.module("ngClassifieds")
 
 		// Injecting $scope and the new factory
-		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){ 
+		.controller("classifiedsCtrl", function($scope, $http, $state, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog){ 
 				
 				var vm = this;
 
@@ -36,9 +36,8 @@
 
 				function openSidebar() {
 					// open the sidebar
-
-					// using componenet ID
-					$mdSidenav("left").open();
+					// navigation to the new state
+					$state.go("classifieds.new")
 				}
 				function closeSidebar() {
 					// open the sidebar
