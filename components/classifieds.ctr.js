@@ -9,20 +9,17 @@
 				
 				var vm = this;
 
-
-				vm.openSidebar = openSidebar;
-				vm.closeSidebar = closeSidebar;
-				vm.saveClassified = saveClassified;
-				vm.editClassified = editClassified;
-				vm.saveEdit = saveEdit;
-				vm.deleteClassified = deleteClassified;
-
-				// not running them but just initialising them
-				vm.classifieds;
 				vm.categories;
-				vm.editing;
 				vm.classified;
-
+				vm.classifieds;
+				vm.closeSidebar = closeSidebar;
+				vm.deleteClassified = deleteClassified;
+				vm.editing;
+				vm.editClassified = editClassified;
+				vm.openSidebar = openSidebar;
+				vm.saveClassified = saveClassified;
+				vm.saveEdit = saveEdit;
+				
 				// asynch
 				classifiedsFactory.getClassifieds()
 				.then(function(classifieds){
