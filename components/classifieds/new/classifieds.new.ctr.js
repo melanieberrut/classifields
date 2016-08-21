@@ -7,6 +7,7 @@
 			
 			var vm = this;
 			vm.closeSidebar = closeSidebar;
+			vm.saveClassified = saveClassified;
 
 			// note: when going to the new state /new, the side nav is not opening
 			// due the event loop
@@ -30,5 +31,18 @@
 				vm.sidenavOpen = false;
 			}
 
+			function saveClassified(classified){
+				if(classified){
+					// Fake out user logged in contact details
+					classified.contact = {
+						name: "Melanie B",
+						phone: "0707070707070",
+						email: "test@test.com"
+					}
+
+					$scope.$emit('newClassified', classified);
+					vm.sidenavOpen = false;
+				}	
+			}
 		})
 })();

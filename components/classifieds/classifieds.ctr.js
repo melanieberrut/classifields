@@ -27,6 +27,16 @@
 					vm.categories = getCategories(vm.classifieds);
 				});
 
+				$scope.$on("newClassified", function (event, classified) {
+					// give it an ID
+					classified.id = vm.classifieds.length +1;
+					// push to array
+					vm.classifieds.push(classified);
+					// show toast
+					showToast("classified saved!");
+
+				})
+
 				// Fake out user logged in contact details
 				var contact = {
 					name: "Melanie B",

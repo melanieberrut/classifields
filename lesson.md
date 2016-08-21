@@ -143,6 +143,27 @@ Good practise: on the controller, all the new : vm.something at the top of the c
 #watch
 watchers, is a special feature that comes with $, watches some values and we can define custom behavior to respond on when this value changes
 
+#$scope features to communicate data between controllers
+$scope.on to be used in conjuction with $scope.$broadcast and $scope.$emit
+$scope.$broadcast & $scope.$emit :used to send messages between scopes
+$scope.$broadcast: send messages/data down to child scope
+$scope.$emit: emit the message/data up the scope
+
+Example:
+```javascript
+// in child controller:
+vm.sendMessage = function (){
+	$scope.$emit("myMessage", "hey how are you?");	
+}
+
+// parent controller
+$scope.$on('myMessage', function(event, message){
+	console.log(message);
+});
+
+```
+
+
 #Glossary
 XHR: XML Http Request
 IIFE: Immediately invoke function Expression
