@@ -44,6 +44,10 @@
 					email: "test@test.com"
 				}
 
+				$scope.$on("editSaved", function (event, message) {
+					showToast(message);
+				});
+
 				function openSidebar() {
 					// open the sidebar
 					// navigation to the new state
@@ -82,10 +86,13 @@
 
 				// Edit the classfied method
 				function editClassified(classified){
-					vm.editing = true;
-					openSidebar();
+					// second attribute parse object information via UI router
+					// check app.js params
+					$state.go("classifieds.edit", {
+						id: classified.id,// id of the classified we are editing
+						classified: classified
+					});
 
-					vm.classified = classified;
 				}
 			
 				function saveEdit(){
