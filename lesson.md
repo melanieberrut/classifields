@@ -191,7 +191,26 @@ $http.delete("https://api.github.com/users").then(function(response){
 # Firebase
 Real time data store
 
-
+# Directive example
+```html
+<hello-message message="myMessage"></hello-message>
+<hello-message message="myOtherMessage"></hello-message>
+```
+```javascript
+app.controller("myController", function(){
+	$scope.myMessage = "My message";
+	$scope.myOtherMessage = "My other message";
+})
+.directive("helloMessage", function(){
+	return {
+		scope: {
+			// parsing data through attribute, could be also '=message'
+			message: '='
+		},
+		template: '<h1>{{message}}</h1>'
+	}
+});
+```
 
 #Glossary
 XHR: XML Http Request
