@@ -212,6 +212,21 @@ app.controller("myController", function(){
 });
 ```
 
+# AngularJS 
+
+### AngularJS 1.X
+	 - Performance issue with large datasets
+	 - Difficult to manage state and data on large application
+	 - two way data binding on large application
+	 - not supporting for new web standards (ex: web components)
+
+### AngularJS 2.X
+	 - Components based
+	 - TypeScript - JS with type annotation
+	 - Fewer concepts, simplified (4 ways to make services in 1.x)
+
+
+
 #Glossary
 XHR: XML Http Request
 IIFE: Immediately invoke function Expression
