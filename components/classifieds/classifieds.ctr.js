@@ -37,11 +37,9 @@
 					console.log(response);
 				});
 
+				// new classifieds
 				$scope.$on("newClassified", function (event, classified) {
-					// give it an ID
-					classified.id = vm.classifieds.length +1;
-					// push to array
-					vm.classifieds.push(classified);
+					vm.classifieds.$add(classified);
 					// show toast
 					showToast("classified saved!");
 
