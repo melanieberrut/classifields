@@ -20,11 +20,21 @@
 				vm.saveClassified = saveClassified;
 				vm.saveEdit = saveEdit;
 				
-				// asynch
-				classifiedsFactory.getClassifieds()
-				.then(function(classifieds){
-					vm.classifieds = classifieds.data;
-					vm.categories = getCategories(vm.classifieds);
+
+				vm.classifieds = classifiedsFactory.ref;
+				// wait for our data to be loaded
+				vm.classifieds.$loaded().then(function(classifieds){
+					vm.categories = getCategories(classifieds)
+				})
+				// // asynch - Moved to firebase
+				// classifiedsFactory.getClassifieds()
+				// .then(function(classifieds){
+				// 	vm.classifieds = classifieds.data;
+				// 	vm.categories = getCategories(vm.classifieds);
+				// });
+
+				$http.get("https://api.github.com/users").then(function(response){
+					console.log(response);
 				});
 
 				$scope.$on("newClassified", function (event, classified) {
@@ -157,5 +167,6 @@
 					// we want to put unique category to avoid duplicate results
 					return _.uniq(categories);
 				}
+
 		});
 })();

@@ -163,6 +163,35 @@ $scope.$on('myMessage', function(event, message){
 
 ```
 
+# Usual Backend
+```javascript
+// url is called the endpoint - where the data is fetched
+
+// Get data
+$http.get("https://api.github.com/users").then(function(response){
+	console.log(response);
+});
+
+// Save data
+$http.post("https://api.github.com/users").then(function(response){
+	console.log(response);
+});
+
+// Update data
+$http.put("https://api.github.com/users").then(function(response){
+	console.log(response);
+});
+
+// Delete
+$http.delete("https://api.github.com/users").then(function(response){
+	console.log(response);
+});
+```
+
+# Firebase
+Real time data store
+
+
 
 #Glossary
 XHR: XML Http Request
