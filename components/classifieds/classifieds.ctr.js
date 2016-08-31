@@ -139,9 +139,8 @@
 						.then(
 							// FOR CLICK YES
 							function(){
-								// finding the index in the array
-								var index = vm.classifieds.indexOf(classified);
-								vm.classifieds.splice(index, 1);
+								vm.classifieds.$remove(classified);
+								showToast("Classified deleted!")
 						}, 
 							// FOR CLICK NO
 							function(){
