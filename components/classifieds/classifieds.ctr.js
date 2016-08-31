@@ -97,8 +97,7 @@
 					// second attribute parse object information via UI router
 					// check app.js params
 					$state.go("classifieds.edit", {
-						id: classified.id,// id of the classified we are editing
-						classified: classified
+						id: classified.$id,// id replaced to $id to match firebase id
 					});
 
 				}

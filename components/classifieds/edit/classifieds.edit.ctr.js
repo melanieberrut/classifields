@@ -6,9 +6,14 @@
 		.controller("editClassifiedsCtrl", function($scope, $mdSidenav, $state, $mdDialog, $timeout, classifiedsFactory){
 			
 			var vm = this;
+			vm.classifieds = classifiedsFactory.ref;
+
 			vm.closeSidebar = closeSidebar;
 			vm.saveEdit = saveEdit;
-			vm.classified = $state.params.classified;
+			// get the id from the param
+			vm.classified = vm.classifieds.$getRecord($state.params.id);
+
+
 
 			// note: when going to the new state /new, the side nav is not opening
 			// due the event loop
@@ -33,8 +38,11 @@
 			}
 
 			function saveEdit(){
-				$scope.$emit('editSaved', "Edit saved!");
-				vm.sidenavOpen = false;
+				vm.classifieds.$save(vm.classified).then(function(){
+					$scope.$emit('editSaved', "Edit saved!");
+					vm.sidenavOpen = false;
+				});
+				
 			}
 		})
 })();
